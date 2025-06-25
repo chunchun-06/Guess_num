@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the Number</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #d2eef4, #c7a1a1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-family: cursive;
+            color: #444;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px #aaaaaa;
+        }
+
+        #container {
+            background: #e0e0e0;
+            border-radius: 25px;
+            box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
+            padding: 40px 30px;
+            max-width: 90%;
+            width: 380px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        input[type="number"] {
+            padding: 12px;
+            width: 100%;
+            margin: 15px 0;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(145deg, #f0f0f0, #cacaca);
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            font-size: 16px;
+            outline: none;
+            /* CC here it removes the outline of box */
+        }
+
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #28a745, #45c36c);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+            transition: transform 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+            background: linear-gradient(45deg, #218838, #3db45e);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        p {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎯 CC GUESS</h1>
+    <div id="container">
+        <h2>Guess a Number (1 to 10)</h2>
+        <p>Can you guess the secret number?</p>
+        <input type="number" id="guessInput" min="1" max="10" placeholder="Enter your guess" />
+        <button onclick="checkGuess()">Guess</button>
+        <p>Refresh the page to play again!</p>
+        <p>Good luck!</p>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById("guessInput").value);
+            const result = document.getElementById("result");
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
+                result.textContent = "⚠️ Please enter a valid number between 1 and 10.";
+                result.style.color = "red";
+                return;
+            }
+
+            if (userGuess === randomNumber) {
+                result.textContent = "🎉 Congratulations! You guessed it right!";
+                result.style.color = "green";
+            } else {
+                result.textContent = "❌ Sorry, the correct number was: " + randomNumber;
+                result.style.color = "orange";
+            }
+        }
+    </script>
+</body>
+
+</html>
