@@ -110,16 +110,16 @@
             const result = document.getElementById("result");
 
             if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
-                result.textContent = "⚠️ Please enter a valid number between 1 and 10.";
+                result.textContent = "Please enter a valid number between 1 and 10.";
                 result.style.color = "red";
                 return;
             }
 
             if (userGuess === randomNumber) {
-                result.textContent = "🎉 Congratulations! You guessed it right!";
+                result.textContent = "Congratulations! You guessed it right!";
                 result.style.color = "green";
             } else {
-                result.textContent = "❌ Sorry, the correct number was: " + randomNumber;
+                result.textContent = "Sorry, the correct number was: " + randomNumber;
                 result.style.color = "orange";
             }
         }
